@@ -1,8 +1,10 @@
 var express = require('express'),
   app = express();
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  controllers = require('./controllers');
 
   app.use(bodyParser.urlencoded({ extended: true}));
+
 
 
   // allow cross origin requests (optional)
@@ -38,6 +40,10 @@ var express = require('express'),
    /*
    * JSON API Endpoints
    */
+
+   app.get('/api', controllers.api.index);
+
+   app.get('/api/recipes', controllers.recipes.index);
 
   //Listen on Port 3000
   app.listen(process.env.PORT || 3000, function () {
