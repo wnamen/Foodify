@@ -68,19 +68,18 @@ var recipeList = [
 
 
 $(document).ready(function() {
-
+  console.log(recipeList)
   var recipeHtml = $('#recipe-template').html();
   var recipeTemplate = Handlebars.compile(recipeHtml);
 
   // make a get request for all albums
-  $.get('/api/recipes').success(function(recipes) {
-    $recipes.forEach(function(recipe) {
+  $.get('/api/recipes').success(function(recipeList) {
+    recipeList.forEach(function(recipe) {
       renderRecipe(recipe);
     });
   });
-
-
 });
+
 
 function renderRecipe(recipe) {
   var html = recipeTemplate(recipe);
