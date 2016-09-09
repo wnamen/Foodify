@@ -72,79 +72,23 @@
   <section>
   <div class="control-group">
     <div class="container">
-       <div class="col-md-4 check-row">
+        <div id="ingredients">
+        <script id='ingredient-template' type='text/x-handlebars-template'>
 
-        <form role="form">
-          <div class="form-group">
+           <div class="col-md-4 check-row">
 
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="check"> Check me out
-              </label>
+            <form role="form">
+                <div class="form-group">
+
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" class="check"> {{ingredient}}
+                      </label>
+                    </div>
+                </div>
+            </form>
             </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="check"> Check me out
-              </label>
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="check"> Check me out
-              </label>
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="check"> Check me out
-              </label>
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="check"> Check me out
-              </label>
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="check"> Check me out
-              </label>
-            </div>
-
-            <div class="checkbox">
-            <label>
-              <input type="checkbox" class="check"> Check me out
-            </label>
-          </div>
-            <div class="checkbox">
-            <label>
-              <input type="checkbox" class="check"> Check me out
-            </label>
-          </div>
-            <div class="checkbox">
-            <label>
-              <input type="checkbox" class="check"> Check me out
-            </label>
-          </div>
-            <div class="checkbox">
-            <label>
-              <input type="checkbox" class="check"> Check me out
-            </label>
-          </div>
-            <div class="checkbox">
-            <label>
-              <input type="checkbox" class="check"> Check me out
-            </label>
-          </div>
-            <div class="checkbox">
-            <label>
-              <input type="checkbox" class="check"> Check me out
-            </label>
-          </div>
-        </form>
-      </div>
+        </script>
      </div>
    </div>
 
@@ -164,15 +108,15 @@
       <div id='recipes'>
       <script id='recipe-template' type='text/x-handlebars-template'>
 
-        <div class="col-md-4 portfolio-item">
-            <a href="#">
-                <img class="img-responsive" src="{{image}}" alt="">
-            </a>
-            <h3>
-                <a href="#">{{title}}</a>
-            </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-        </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="{{image}}" alt="">
+                </a>
+                <h3>
+                    <a href="#">{{title}}</a>
+                </h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            </div>
       </script>
 
         <hr>

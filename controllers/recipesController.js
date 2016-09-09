@@ -1,8 +1,9 @@
 var db = require('../models');
 
 function index(req, res) {
-	db.Recipe.find({}, function(err, allRecipes) {
-		res.json(allRecipes);
+	db.Recipe.find({}, function(err, recipes) {
+		console.log('in here');
+		res.json(recipes);
 	});
 }
 

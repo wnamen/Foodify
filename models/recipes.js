@@ -7,6 +7,6 @@ var RecipeSchema = new Schema({
 	ingredients: [ String ]
 });
 
-var Recipe = mongoose.model('recipe', RecipeSchema);
+var Recipe = mongoose.model('Recipe', RecipeSchema);
 
 module.exports = Recipe;
