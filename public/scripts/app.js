@@ -1,4 +1,6 @@
 console.log("sanity check is working!!!!");
+var recipeHtml;
+var recipeTemplate;
 
 var recipeList = [
   {
@@ -69,20 +71,22 @@ var recipeList = [
 
 $(document).ready(function() {
 
-  var recipeHtml = $('#recipe-template').html();
-  var recipeTemplate = Handlebars.compile(recipeHtml);
+  recipeHtml = $('#recipe-template').html();
+  recipeTemplate = Handlebars.compile(recipeHtml);
 
   // make a get request for all albums
-  $.get('/api/recipes').success(function(recipes) {
-    $recipes.forEach(function(recipe) {
+  // $.get('/api/recipes').success(function(recipeList) {
+    recipeList.forEach(function(recipe) {
       renderRecipe(recipe);
     });
-  });
+  // });
 
 
 });
 
 function renderRecipe(recipe) {
+
+  console.log(recipe);
   var html = recipeTemplate(recipe);
-  $('#recipe').prepend(html);
+  $('#recipes').prepend(html);
 }
