@@ -34,6 +34,7 @@ var express = require('express'),
 
    app.get('/api', controllers.api.index);
 
+   app.get('/api/ingredients', controllers.ingredients.index);
    app.get('/api/recipes', controllers.recipes.index);
 
   //Listen on Port 8080
