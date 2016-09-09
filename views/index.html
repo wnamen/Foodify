@@ -72,17 +72,22 @@
   <section>
   <div class="control-group">
     <div class="container">
-       <div class="col-md-4 check-row">
+        <div id="ingredients">
+        <script id='ingredient-template' type='text/x-handlebars-template'>
 
-        <form role="form">
-          <div class="form-group">
+           <div class="col-md-4 check-row">
 
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="check"> Check me out
-              </label>
-            </div>
+            <form role="form">
+                <div class="form-group">
 
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" class="check"> {{ingredient}}
+                      </label>
+                    </div>
+                </div>
+            </form>
+ <!--        
             <div class="checkbox">
               <label>
                 <input type="checkbox" class="check"> Check me out
@@ -144,7 +149,9 @@
             </label>
           </div>
         </form>
-      </div>
+      </div> -->
+            </div>
+        </script>
      </div>
    </div>
 
