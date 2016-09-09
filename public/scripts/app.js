@@ -68,7 +68,7 @@ var recipeList = [
 
 
 $(document).ready(function() {
-  console.log(recipeList)
+
   var recipeHtml = $('#recipe-template').html();
   var recipeTemplate = Handlebars.compile(recipeHtml);
 
