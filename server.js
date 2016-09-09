@@ -10,7 +10,7 @@ var express = require('express'),
    * DATABASE *
    ************/
 
-  // var db = require('./models');
+  var db = require('./models');
 
   /************
    * ROUTES *
@@ -32,11 +32,11 @@ var express = require('express'),
    * JSON API Endpoints
    */
 
-   // app.get('/api', controllers.api.index);
+   app.get('/api', controllers.api.index);
 
-   // app.get('/api/recipes', controllers.recipes.index);
+   app.get('/api/recipes', controllers.recipes.index);
 
-  //Listen on Port 3000
-  app.listen(process.env.PORT || 3000, function () {
-    console.log('Express server is up and running on http://localhost:3000/');
+  //Listen on Port 8080
+  app.listen(process.env.PORT || 8080, function () {
+    console.log('Express server is up and running on http://localhost:8080/');
   });

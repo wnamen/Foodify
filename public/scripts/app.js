@@ -75,14 +75,15 @@ $(document).ready(function() {
   recipeTemplate = Handlebars.compile(recipeHtml);
 
   // make a get request for all albums
+
   // $.get('/api/recipes').success(function(recipeList) {
     recipeList.forEach(function(recipe) {
       renderRecipe(recipe);
     });
   // });
 
-
 });
+
 
 function renderRecipe(recipe) {
 
