@@ -71,6 +71,7 @@ db.Recipe.remove({}, function(err, recipes) {
 	db.Recipe.create(recipeList, function(err, recipes){
 		if(err) { return console.log("ERROR", err); }
 	});
-		process.exit();
+	
+  process.exit();
 	
 });
