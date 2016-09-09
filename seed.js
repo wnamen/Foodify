@@ -67,11 +67,12 @@ var recipeList = [
 ]
 
 db.Recipe.remove({}, function(err, recipes) {
+  if(err) { return console.log("ERROR", err); };
 
 	db.Recipe.create(recipeList, function(err, recipes){
-		if(err) { return console.log("ERROR", err); }
+		if(err) { return console.log("ERROR", err); };
+    console.log(recipeList);
+    process.exit();
 	});
-	console.log('in here');
-  process.exit();
-	
+
 });
