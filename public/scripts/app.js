@@ -57,8 +57,7 @@ $(document).ready(function() {
   });
 
   $.get('/api/ingredients').success(function(ingredients){
-
-  	ingredientList.forEach(function(ingredient) {
+  	ingredients.forEach(function(ingredient) {
   		renderIngredient(ingredient);
   	});
   });
