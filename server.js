@@ -3,7 +3,7 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   controllers = require('./controllers');
 
-  app.use(bodyParser.urlencoded({ extended: true}));
+  app.use(bodyParser.urlencoded({ extended: true }));
 
 
   /************

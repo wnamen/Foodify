@@ -114,14 +114,18 @@ $(document).ready(function() {
   ingredientTemplate = Handlebars.compile(ingredientHtml);
   // make a get request for all albums
 
-  // $.get('/api/recipes').success(function(recipeList) {
-    recipeList.forEach(function(recipe) {
+  $.get('/api/recipes').success(function(recipes) {
+  	console.log(recipes);
+    recipes.forEach(function(recipe) {
+  		// console.log('in here');
       renderRecipe(recipe);
     });
-  // });
+  });
+
   	ingredientList.forEach(function(ingredient) {
   		renderIngredient(ingredient);
   	});
+
 });
 
 function renderIngredient(ingredient) {
