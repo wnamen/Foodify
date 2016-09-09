@@ -1,5 +1,38 @@
 var db = require("./models");
 
+var ingredientList = [
+	{
+		ingredient: "avocado",
+	},
+	{
+		ingredient: "tomato",
+	},
+	{
+		ingredient: "onions",
+	},
+	{
+		ingredient: "chicken",
+	},
+	{
+		ingredient: "garlic",
+	},
+	{
+		ingredient: "cilantro",
+	},
+	{
+		ingredient: "potato",
+	},
+	{
+		ingredient: "asparagus",
+	},
+	{
+		ingredient: "steak",
+	},
+	{
+		ingredient: "cucumber",
+	}
+];
+
 var recipeList = [
   {
     title: "Shells and Cheese",
@@ -66,13 +99,20 @@ var recipeList = [
   }
 ]
 
-db.Recipe.remove({}, function(err, recipes) {
+db.Ingredient.remove({}, function(err, ingredients) {
   if(err) { return console.log("ERROR", err); };
 
-	db.Recipe.create(recipeList, function(err, recipes){
-		if(err) { return console.log("ERROR", err); };
-    console.log(recipeList);
-    process.exit();
-	});
+  db.Recipe.remove({}, function(err, recipes) {
+    if(err) { return console.log("ERROR", err); };
 
+    db.Ingredient.create(ingredientList, function(err, ingredients){
+      if(err) { return console.log("ERROR", err); };
+
+      db.Recipe.create(recipeList, function(err, recipes){
+        if(err) { return console.log("ERROR", err); };
+        console.log(recipeList);
+        process.exit();
+      });
+    });
+  });
 });
