@@ -15,6 +15,12 @@ html {
     background-size: cover;
     -o-background-size: cover;
 }
+/*
+#image {
+    background-image: url("https://www.rubios.com/sites/default/files/banners/Ingredients_Feature.jpg");
+    height: 100%;
+
+}*/
 
 header {
     min-height: 100%;
@@ -53,6 +59,7 @@ header {
    width: 100%;
    color: white; 
    text-align: center;
+   font-style: italic; 
 }
 
 
