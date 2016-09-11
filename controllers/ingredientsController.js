@@ -8,7 +8,11 @@ function index(req, res) {
 }
 
 function create(req, res){
+	var data = req.body;
 
+	db.Ingredient.create(req.body, function (err, ingredient){
+		res.json(ingredient);
+	});
 }
 
 function show(req, res){
