@@ -38,9 +38,24 @@ header {
     padding-top:10px; color:#black;
 }
 
+#left-search {
+    display: inline-block;
+    width: 50%;
+}
+
+#right-search {
+    display: inline-block;
+    width: 50%;
+}
+
 #ingredients {
     height: 200px;
 }
+
+.item {
+    border: 2px solid black;
+}
+
 
 .intro { 
    position: absolute; 
