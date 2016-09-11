@@ -1,7 +1,5 @@
 console.log("sanity check is working!!!!");
 
-// var recipeUrl = "http://food2fork.com/api/get?key=1b70f7c3dffb5c592b9bb7ae1accc823";
-
 var recipeHtml;
 var recipeTemplate;
 var ingredientHtml;
@@ -37,15 +35,29 @@ $(document).ready(function() {
   	$(this).trigger("reset");
 
 
+  // make a get request for top 30 recipes
+  $.ajax({
+    method: "GET",
+    url: '/api/f2fdata',
+    dataType: 'JSON',
+    success: handleRecipes
   });
 
-  // make a get request for top 30 recipes
-  // $.ajax({
-  // method: "get",
-  // url: 'http://food2fork.com/api/search?key=1b70f7c3dffb5c592b9bb7ae1accc823',
-  // dataType: 'JSON',
-  // success: onSuccess
-  // });
+  $('#search-form').on('submit', function(e) {
+      e.preventDefault();
+
+      $("#recipes").empty();
+
+      $.ajax({
+        method: "GET",
+        url: '/api/f2fdata/query',
+        dataType: 'JSON',
+        data: $(this).serialize(),
+        success: handleRecipes
+      });
+
+      $(this).trigger("reset");
+    });
 
 
   // $.get('/api/recipes').success(function(recipes) {
@@ -63,24 +75,21 @@ $(document).ready(function() {
 
 });
 
-function onSuccess(json){
+function handleRecipes(json){
   var recipes = json.recipes;
-  // console.log(recipes);
   recipes.forEach(function(recipe) {
     renderRecipe(recipe);
   });
 };
 
 function renderIngredient(ingredient) {
-  console.log(ingredient);
+  // console.log(ingredient);
   var html = ingredientTemplate(ingredient);
   $('#right-search').prepend(html);
 }
 
 function renderRecipe(recipe) {
-
-  console.log(recipe);
-  // var html = recipeTemplate(recipe);
-  // $('#recipes').prepend(html);
-
+  // console.log(recipe);
+  var html = recipeTemplate(recipe);
+  $('#recipes').prepend(html);
 }
