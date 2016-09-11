@@ -31,7 +31,9 @@ $(document).ready(function() {
     //   renderIngredient(ingredient);  //render the server's response
     // });
     // renderIngredient(ingredientData);
-	$('.ingredients').append( "<div class='item'>" + data + "</div>");
+	$('.ingredients').append("<div class='items'><div class='item'>" + data + "</div><div class='delete'><button>X</button></div>");
+	// $('.ingredients').append( );
+
   	$(this).trigger("reset");
 
 
