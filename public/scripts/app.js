@@ -2,18 +2,12 @@ console.log("sanity check is working!!!!");
 
 var recipeHtml;
 var recipeTemplate;
-var ingredientHtml;
-var ingredientTemplate;
-var ingredientList = [];
-
+var data;
 
 $(document).ready(function() {
 
-  // recipeHtml = $('#recipe-template').html();
-  // recipeTemplate = Handlebars.compile(recipeHtml);
-
-  // ingredientHtml = $('#ingredient-template').html();
-  // ingredientTemplate = Handlebars.compile(ingredientHtml);
+  recipeHtml = $('#recipe-template').html();
+  recipeTemplate = Handlebars.compile(recipeHtml);
 
   $(".search-form").on("submit", function(e){
   	e.preventDefault();
@@ -22,15 +16,12 @@ $(document).ready(function() {
     var index = ingredientData.indexOf("=");
     var data = ingredientData.slice(index + 1);
 
-    // $.post('/api/ingredients', ingredientData, function(ingredient) {
-    // //   console.log('ingredient after POST', ingredient);
-    //   renderIngredient(data);  //render the server's response
-    // });
-    // renderIngredient(data);
-
-	$('.ingredients').append("<button class='delete' id='"+ data +"'>" + data + "<span> X</span></button>");
+    $.post('/api/ingredients', ingredientData, function(ingredient) {
+      renderIngredient(ingredient);  //render the server's response
+    });
 
   	$(this).trigger("reset");
+  });
 
   // make a get request for top 30 recipes
   $.ajax({
@@ -50,7 +41,7 @@ $(document).ready(function() {
 
 	$('.ingredients').on('click', '.delete', function(e) {
 		console.log("hello");
-		e.preventDefault(); 
+		e.preventDefault();
 		var idName = $(this).attr('id');
 		console.log(idName);
 		$("#" + idName).remove();
@@ -83,8 +74,6 @@ $(document).ready(function() {
 
       $(this).trigger("reset");
     });
-
-
 });
 
 function handleRecipes(json){
@@ -96,8 +85,7 @@ function handleRecipes(json){
 
 function renderIngredient(ingredient) {
   // console.log(ingredient);
-  var html = ingredientTemplate(ingredient);
-  $('#right-search').prepend(html);
+  $('.ingredients').append("<button class='delete' id='"+ data +"'>" + data + "<span> X</span></button>");
 }
 
 function renderRecipe(recipe) {
