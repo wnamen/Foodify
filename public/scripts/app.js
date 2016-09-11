@@ -23,25 +23,33 @@ $(document).ready(function() {
     var ingredientData = $(this).serialize();
     var index = ingredientData.indexOf("=");
     var data = ingredientData.slice(index + 1);
-    console.log(data);
-    // console.log('ingredientData', ingredientData);
 
     // $.post('/api/ingredients', ingredientData, function(ingredient) {
-    //   console.log('ingredient after POST', ingredient);
-    //   renderIngredient(ingredient);  //render the server's response
+    // //   console.log('ingredient after POST', ingredient);
+    //   renderIngredient(data);  //render the server's response
     // });
-    // renderIngredient(ingredientData);
-	// $('.ingredients').append("<div class='items'><div class='item'>" + data + "</div><div class='delete'><button>X</button></div>");
-	$('.ingredients').append("<div class='items'><div class='item'>" + data + "</div><div class='delete'><button>X</button></div>");
-	$('button').click(function() {
-		$('.ingredients').empty();
-	});
-	// $('.ingredients').append( );
+    // renderIngredient(data);
+
+	$('.ingredients').append("<div class='item' id='"+ data +"'><div class='"+ data +"'>" + data + "</div><div><button class='"+ data +"'>X</button></div></div>");
 
   	$(this).trigger("reset");
 
-
   });
+
+
+  	$('.item').on('click', function(e) {
+  		var test = $(this).attr('id');
+  		console.log(test);
+  	});
+
+
+	// $('.item').on('click', function(e) {
+	// 	console.log("hello");
+	// 	e.preventDefault(); 
+	// 	var className = $(this).attr('class');
+	// 	console.log(className);
+	// 	$('.className').empty();
+	// });
 
   // make a get request for top 30 recipes
   // $.ajax({
@@ -51,21 +59,8 @@ $(document).ready(function() {
   // success: onSuccess
   // });
 
-
-  // $.get('/api/recipes').success(function(recipes) {
-  //   recipes.forEach(function(recipe) {
-  // 		// console.log('in here');
-  //     renderRecipe(recipe);
-  //   });
-  // });
-
-  // $.get('/api/ingredients').success(function(ingredients){
-  // 	ingredients.forEach(function(ingredient) {
-  // 		renderIngredient(ingredient);
-  // 	});
-  // });
-
 });
+
 
 function onSuccess(json){
   var recipes = json.recipes;
