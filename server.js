@@ -49,10 +49,10 @@ var express = require('express'),
    app.get('/api', controllers.api.index);
 
    app.get('/api/ingredients', controllers.ingredients.index);
+   app.post('/api/ingredients', controllers.ingredients.create);
   //  app.get('/api/recipes', controllers.recipes.index);
    app.get('/api/f2fdata', controllers.f2fdata.index);
    app.get('/api/f2fdata/query', controllers.f2fdata.show);
-  //  app.get('/api/f2fdata', controllers.f2fdata.ingredients);
 
   //Listen on Port 8080
   app.listen(process.env.PORT || 8080, function () {
