@@ -84,32 +84,41 @@
 
   <section>
   <div class="control-group">
-    <div class="container">
-        <div id="ingredients" style="overflow-y:scroll;">
-        <script id='ingredient-template' type='text/x-handlebars-template'>
+  <div class="container">
+    <div class="container" id="left-search">
+        <!-- <div id="ingredients" style="overflow-y:scroll;"> -->
+            <!-- <script id='ingredient-template' type='text/x-handlebars-template'> -->
 
-           <div class="col-md-5 check-row">
+                <div cl ass="col-md-12 check-row">
+                    <div class="row">
+                        <input type="hidden" name="count" value="1"/>
+                        <div class="control-group" id="fields">
 
-            <form role="form">
-                <div class="form-group">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                  </div>
-<!--                     <div class="checkbox">
-                      <label>
-                        <input type="checkbox" class="check"> {{ingredient}}
-                      </label>
-                    </div> -->
+                            <div id="ingredient-form"> 
+                                <form class="input-append">
+                                    <input id="ingredient-input" name="ingredient" value="" type="text" placeholder="Add Ingredient"/>
+                                    <button id="add-btn" name="ingredient-btn" type="submit" class="btn add-more">+</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </form>
-            </div>
-        </script>
-     </div>
+            <!-- </script> -->
+    </div>
+    <div class="container" id="right-search">
+        <div class="col-md-2 ingredients">
+        </div>
+    </div>
+    </div>
+        <!-- </div> -->
+        <center><form class="navbar-form">
+            <button type="submit" class="btn btn-default">Search</button>
+            <button type="submit" class="btn btn-default" id="cform">Clear</button>
+        </form>
+
+
    </div>
-    <center><form class="navbar-form">
-        <button type="submit" class="btn btn-default">Search</button>
-        <button type="submit" class="btn btn-default" id="cform">Clear</button>
-    </form>
 
   </section>
 
