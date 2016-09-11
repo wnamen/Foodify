@@ -15,25 +15,22 @@ $(document).ready(function() {
   // ingredientHtml = $('#ingredient-template').html();
   // ingredientTemplate = Handlebars.compile(ingredientHtml);
 
-  $(".input-append").on("submit", function(e){
+  $(".search-form").on("submit", function(e){
   	e.preventDefault();
 
     var ingredientData = $(this).serialize();
     var index = ingredientData.indexOf("=");
     var data = ingredientData.slice(index + 1);
-    console.log(data);
-    // console.log('ingredientData', ingredientData);
 
     // $.post('/api/ingredients', ingredientData, function(ingredient) {
-    //   console.log('ingredient after POST', ingredient);
-    //   renderIngredient(ingredient);  //render the server's response
+    // //   console.log('ingredient after POST', ingredient);
+    //   renderIngredient(data);  //render the server's response
     // });
-    // renderIngredient(ingredientData);
-	$('.ingredients').append("<div class='items'><div class='item'>" + data + "</div><div class='delete'><button>X</button></div>");
-	// $('.ingredients').append( );
+    // renderIngredient(data);
+
+	$('.ingredients').append("<button class='delete' id='"+ data +"'>" + data + "<span> X</span></button>");
 
   	$(this).trigger("reset");
-
 
   // make a get request for top 30 recipes
   $.ajax({
@@ -42,6 +39,34 @@ $(document).ready(function() {
     dataType: 'JSON',
     success: handleRecipes
   });
+
+
+
+  	// $('.item').on('click', function(e) {
+  	// 	var test = $(this).attr('id');
+  	// 	console.log(test);
+  	// });
+
+
+	$('.ingredients').on('click', '.delete', function(e) {
+		console.log("hello");
+		e.preventDefault(); 
+		var idName = $(this).attr('id');
+		console.log(idName);
+		$("#" + idName).remove();
+	});
+	$('#clear-form').on('click', function(e) {
+		e.preventDefault();
+		$('.ingredients').empty();
+	})
+
+  // make a get request for top 30 recipes
+  // $.ajax({
+  // method: "get",
+  // url: 'http://food2fork.com/api/search?key=1b70f7c3dffb5c592b9bb7ae1accc823',
+  // dataType: 'JSON',
+  // success: onSuccess
+  // });
 
   $('#search-form').on('submit', function(e) {
       e.preventDefault();
@@ -59,19 +84,6 @@ $(document).ready(function() {
       $(this).trigger("reset");
     });
 
-
-  // $.get('/api/recipes').success(function(recipes) {
-  //   recipes.forEach(function(recipe) {
-  // 		// console.log('in here');
-  //     renderRecipe(recipe);
-  //   });
-  // });
-
-  // $.get('/api/ingredients').success(function(ingredients){
-  // 	ingredients.forEach(function(ingredient) {
-  // 		renderIngredient(ingredient);
-  // 	});
-  // });
 
 });
 
