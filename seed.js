@@ -110,7 +110,6 @@ db.Ingredient.remove({}, function(err, ingredients) {
 
       db.Recipe.create(recipeList, function(err, recipes){
         if(err) { return console.log("ERROR", err); };
-        console.log(recipeList);
         process.exit();
       });
     });
