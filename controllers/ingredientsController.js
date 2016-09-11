@@ -8,7 +8,11 @@ function index(req, res) {
 }
 
 function create(req, res){
-
+	db.Ingredient.create(req.body, function(err, ingredient) {
+		if(err) { console.log('error', err); }
+		console.log(ingredient);
+		res.json(ingredient);
+	});
 }
 
 function show(req, res){
