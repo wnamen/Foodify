@@ -31,7 +31,11 @@ $(document).ready(function() {
     //   renderIngredient(ingredient);  //render the server's response
     // });
     // renderIngredient(ingredientData);
+	// $('.ingredients').append("<div class='items'><div class='item'>" + data + "</div><div class='delete'><button>X</button></div>");
 	$('.ingredients').append("<div class='items'><div class='item'>" + data + "</div><div class='delete'><button>X</button></div>");
+	$('button').click(function() {
+		$('.ingredients').empty();
+	});
 	// $('.ingredients').append( );
 
   	$(this).trigger("reset");
