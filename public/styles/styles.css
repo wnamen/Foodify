@@ -39,22 +39,34 @@ header {
     padding-top:10px; color:#black;
 }
 
-#left-search {
-    display: inline-block;
-    width: 50%;
+#search-bar {
+    display: block;
 }
 
-#right-search {
-    display: inline-block;
-    width: 50%;
+#search-items {
+    display: block;
+    height: 170px;
+    width: 100%;
+}
+
+.search-form {
+    display: inline;
 }
 
 #ingredients {
     height: 200px;
 }
 
+.delete {
+    margin: 10px;
+}
+
 .item {
     border: 2px solid black;
+}
+
+span {
+    color: red;
 }
 
 
