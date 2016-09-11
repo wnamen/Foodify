@@ -17,7 +17,7 @@ $(document).ready(function() {
   // ingredientHtml = $('#ingredient-template').html();
   // ingredientTemplate = Handlebars.compile(ingredientHtml);
 
-  $(".input-append").on("submit", function(e){
+  $(".search-form").on("submit", function(e){
   	e.preventDefault();
 
     var ingredientData = $(this).serialize();
@@ -30,26 +30,30 @@ $(document).ready(function() {
     // });
     // renderIngredient(data);
 
-	$('.ingredients').append("<div class='item' id='"+ data +"'><div class='"+ data +"'>" + data + "</div><div><button class='"+ data +"'>X</button></div></div>");
+	$('.ingredients').append("<button class='delete' id='"+ data +"'>" + data + "<span> X</span></button>");
 
   	$(this).trigger("reset");
 
   });
 
 
-  	$('.item').on('click', function(e) {
-  		var test = $(this).attr('id');
-  		console.log(test);
-  	});
+  	// $('.item').on('click', function(e) {
+  	// 	var test = $(this).attr('id');
+  	// 	console.log(test);
+  	// });
 
 
-	// $('.item').on('click', function(e) {
-	// 	console.log("hello");
-	// 	e.preventDefault(); 
-	// 	var className = $(this).attr('class');
-	// 	console.log(className);
-	// 	$('.className').empty();
-	// });
+	$('.ingredients').on('click', '.delete', function(e) {
+		console.log("hello");
+		e.preventDefault(); 
+		var idName = $(this).attr('id');
+		console.log(idName);
+		$("#" + idName).remove();
+	});
+	$('#clear-form').on('click', function(e) {
+		e.preventDefault();
+		$('.ingredients').empty();
+	})
 
   // make a get request for top 30 recipes
   // $.ajax({
