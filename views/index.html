@@ -28,16 +28,10 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="#">foodify</a>
                 <form class="navbar-form navbar-left" id="search-form">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="q" value="" placeholder="Search">
+                    <input type="text" class="form-control" name="q" value="" placeholder="Search" required>
                   </div>
                   <button type="submit" class="btn btn-default" id="recipe-search">Submit</button>
                 </form>
@@ -47,10 +41,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#">Recipes</a>
+                      <a href="#ingredient-section">Ingredients</a>
                     </li>
                     <li>
-                        <a href="#">Profile</a>
+                        <a href="#recipe-section">Recipes</a>
+                    </li>
+                    <li>
+                        <a href="/community">Community</a>
                     </li>
                 </ul>
             </div>
@@ -75,7 +72,7 @@
     </section>
 
     <!-- Content Section -->
-    <section>
+    <section id="ingredient-section">
       <div class="container">
           <div class="row">
               <div class="col-lg-12">
@@ -127,12 +124,12 @@
                 <div class="control-group" id="fields">
 
                     <center><div id="ingredient-form">
-                        <form class="search-form">
-                            <input id="ingredient-input" name="ingredient" value="" type="text" placeholder="Add Ingredient"/>
+                        <form id="render-form">
+                            <input id="ingredient-input" name="q" value="" type="text" placeholder="Add Ingredient" required/>
                             <button id="add-btn" name="ingredient-btn" type="submit" class="btn add-more">+</button>
                         </form>
-                        <form class="search-form">
-                            <button type="submit" class="btn btn-default">Search</button>
+                        <form id="search-form">
+                            <button type="submit" id="form-submit" class="btn btn-default">Search</button>
                             <button type="submit" class="btn btn-default" id="clear-form">Clear</button>
                         </form>
 
@@ -155,8 +152,9 @@
       </div>
     </div>
 
-  <section>
-  <div class="container">
+
+  <section id="recipe-section">
+    <div class="container">
 
       <div id='recipes'>
       <script id='recipe-template' type='text/x-handlebars-template'>
@@ -168,41 +166,13 @@
                     <img class="img-responsive" src="{{image_url}}" alt="" id="imageresource">
                 </a>
                 <h3>
-                    <a href="#">{{title}}</a>
+                    <a href="{{source_url}}">{{title}}</a>
                 </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                <!-- <p>{{social_rank}}</p> -->
             </div>
       </script>
     </div>
 
-        <hr>
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <hr>
         <footer>
             <div class="row">
@@ -212,6 +182,7 @@
             </div>
         </footer>
 
+    </div>
   </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>

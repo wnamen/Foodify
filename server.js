@@ -4,7 +4,6 @@ var express = require('express'),
   controllers = require('./controllers'),
   unirest = require('unirest');
 
-
   app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -50,6 +49,9 @@ var express = require('express'),
 
    app.get('/api/ingredients', controllers.ingredients.index);
    app.post('/api/ingredients', controllers.ingredients.create);
+
+
+  //  app.delete('/api/ingredients' controllers.ingredients.delete);
 
    app.get('/api/f2fdata', controllers.f2fdata.index);
    app.get('/api/f2fdata/query', controllers.f2fdata.show);
