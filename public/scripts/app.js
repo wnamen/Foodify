@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     var ingredientData = $(this).serialize();
     var index = ingredientData.indexOf("=");
-    var data = ingredientData.slice(index + 1);
+    data = ingredientData.slice(index + 1);
 
     $.post('/api/ingredients', ingredientData, function(ingredient) {
       renderIngredient(ingredient);  //render the server's response
