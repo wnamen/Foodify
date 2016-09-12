@@ -16,11 +16,17 @@ function create(req, res){
 }
 
 function show(req, res){
-
+  db.Ingredient.findById(req.params.ingredientId, function(err, foundIngredient) {
+    if(err) { console.log('ingredientsController.show error', err); }
+    console.log('ingredientsController.show responding with', foundIngredient);
+    res.json(foundIngredients);
+  });
 }
 
 function destroy(req, res){
-
+  db.Ingredient.findOneAndRemove({ _id: req.params.ingredientId }, function(err, foundIngredient){
+    res.json(foundIngredient);
+  });
 }
 
 function update(req, res){

@@ -44,14 +44,27 @@ var express = require('express'),
    /*
    * JSON API Endpoints
    */
+   app.get('/community', function(req, res){
+    res.sendFile(__dirname + '/views/community.html');
+   })
 
    app.get('/api', controllers.api.index);
 
    app.get('/api/ingredients', controllers.ingredients.index);
    app.post('/api/ingredients', controllers.ingredients.create);
+
+
   //  app.delete('/api/ingredients' controllers.ingredients.delete);
+
    app.get('/api/f2fdata', controllers.f2fdata.index);
    app.get('/api/f2fdata/query', controllers.f2fdata.show);
+
+   app.get('/api/recipes', controllers.recipes.index);
+   app.post('/api/recipes', controllers.recipes.create);
+   app.delete('/api/recipes/:recipeId', controllers.recipes.destroy);
+   app.put('/api/recipes/:recipeId', controllers.recipes.update);
+
+
 
   //Listen on Port 8080
   app.listen(process.env.PORT || 8080, function () {

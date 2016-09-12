@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
 var RecipeSchema = new Schema({
 	title: String,
 	image: String,
-	ingredients: [ String ]
+	summary: String,
+	ingredients: String 
 });
 
 var Recipe = mongoose.model('Recipe', RecipeSchema);
