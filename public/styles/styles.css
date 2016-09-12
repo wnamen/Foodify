@@ -3,9 +3,9 @@ body {
     height: 100%;
 }
 
-html {
+/*html {
     height: 100%;
-}
+}*/
 
 .image-bg-fluid-height,
 .image-bg-fixed-height {
@@ -15,16 +15,17 @@ html {
     background-size: cover;
     -o-background-size: cover;
 }
+
 /*
 #image {
     background-image: url("https://www.rubios.com/sites/default/files/banners/Ingredients_Feature.jpg");
     height: 100%;
-
 }*/
+
 
 header {
     min-height: 100%;
-    margin-top: 4cm;
+/*    margin-top: 4cm;*/
 }
 
 .img-center {
@@ -46,7 +47,7 @@ header {
 #search-items {
     display: block;
     height: 170px;
-    width: 100%;
+    width: 50%;
     margin: 30px 300px; 
 }
 
@@ -58,8 +59,13 @@ header {
     height: 200px;
 }
 
+
+
 .delete {
     margin: 10px;
+    border-color: white;
+    color: black;
+    background-color: white
 }
 
 .item {
@@ -78,7 +84,7 @@ span {
    left: 0;
    width: 100%;
    color: white;
-   font-size: 48;
+   font-size: 52px;
    text-align: center;
 }
 

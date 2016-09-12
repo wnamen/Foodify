@@ -31,6 +31,7 @@ $(document).ready(function() {
     success: handleRecipes
   });
 
+	$('.carousel').carousel();
 
 
   	// $('.item').on('click', function(e) {
