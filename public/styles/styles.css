@@ -47,11 +47,15 @@ header {
     display: block;
     height: 170px;
     width: 100%;
-    margin: 30px 300px; 
+    margin: 30px 300px;
 }
 
-.search-form {
+#search-form {
     display: inline;
+}
+
+#render-form {
+  display: inline;
 }
 
 #ingredients {
