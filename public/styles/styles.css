@@ -47,13 +47,9 @@ header {
 #search-items {
     display: block;
     height: 170px;
-<<<<<<< HEAD
-    width: 50%;
-    margin: 30px 300px; 
-=======
     width: 100%;
     margin: 30px 300px;
->>>>>>> 5b9633e98e4a91b9ebfddace0319f03b7be6f8af
+
 }
 
 #search-form {
