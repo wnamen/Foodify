@@ -2,7 +2,7 @@ var db = require('../models');
 
 function index(req, res) {
 	db.Recipe.find({}, function(err, recipes) {
-		console.log('in controllers');
+		console.log(recipes);
 		res.json(recipes);
 	});
 }
