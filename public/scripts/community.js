@@ -17,7 +17,7 @@ $(document).ready(function() {
   });
 
   $('#recipe-form').submit(handleFormSubmit);
-
+  $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick);
 
 });
 
@@ -47,4 +47,23 @@ function renderRecipe(recipe) {
   // console.log(recipe);
   var html = recipeTemplate(recipe);
   $('#recipes').prepend(html);
+}
+
+function handleDeleteRecipeClick(e){
+	e.preventDefault();
+	var $thisButton = $(this);
+	var recipeId = $thisButton.parent('div').data('recipe-id');
+	console.log($thisButton);
+
+	var url= '/api/recipes/' + recipeId;
+	$.ajax({
+		method: 'DELETE',
+		url: url,
+		success: handleRecipeDelete
+	});
+}
+
+function handleRecipeDelete(data){
+	var deletedRecipeId = data._id;
+	$('div[data-recipe-id=' + deletedRecipeId + ']').remove();
 }
