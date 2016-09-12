@@ -44,6 +44,9 @@ var express = require('express'),
    /*
    * JSON API Endpoints
    */
+   app.get('/community', function(req, res){
+    res.sendFile(__dirname + '/views/community.html');
+   })
 
    app.get('/api', controllers.api.index);
 
@@ -58,7 +61,8 @@ var express = require('express'),
 
    app.get('/api/recipes', controllers.recipes.index);
    app.post('/api/recipes', controllers.recipes.create);
-   app.
+   app.delete('/api/recipes/:recipeId', controllers.recipes.destroy);
+   app.put('/api/recipes/:recipeId', controllers.recipes.update);
 
 
 
