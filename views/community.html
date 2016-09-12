@@ -129,7 +129,7 @@
         <!-- Recipes -->
   <div id="recipes">
       <script id='recipe-template' type='text/x-handlebars-template'>
-        <div class="row">
+        <div class="row" data-recipe-id="{{_id}}">
             <div class="col-md-7">
                 <a href="#">
                     <img class="img-responsive" src="{{image}}" alt="">
@@ -139,9 +139,9 @@
                 <h4>{{title}}</h4>
                 <p>{{summary}}</p>
                 <p>{{ingredients}}</p>
-                <a class="btn btn-danger" href="#">Delete Recipe <span class="glyphicon glyphicon-trash"></span></a>
-                <a class="btn btn-primary" href="#">Update Recipe <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
+                <a class="btn btn-danger delete-recipe" href="#">Delete Recipe <span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-primary update-recipe" href="#">Update Recipe <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
         <!-- /.row -->
 
