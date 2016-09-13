@@ -81,7 +81,7 @@ function renderRecipe(recipe) {
 
 function renderIngredient(ingredient) {
   // console.log(ingredient);
-  $('.ingredients').append("<button class='delete' id='"+ data + "'>" + data + "<span> X </span></button>");
+  $('.ingredients').append("<button class='delete' id='"+ data + "'>" + data + "</button>");
 }
 
 function handleDeleteClick(e) {
