@@ -17,8 +17,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <!-- <script src="js/bootstrap.min.js"></script> -->
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/community.js"></script>
   </head>
@@ -29,22 +28,13 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">foodify</a>
+                <a class="navbar-brand" href="https://foodifyme.herokuapp.com/">foodify</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#">Recipes</a>
-                    </li>
-                    <li>
-                        <a href="#">Ingredients</a>
+                        <a href="#" id="form-toggle">Add New Recipe</a>
                     </li>
                 </ul>
             </div>
@@ -70,11 +60,11 @@
       <div class="row">
       <div class="col-md-10 col-md-offset-1">
 
+        <!-- Form Name -->
+
+
         <form class="form-horizontal" id='recipe-form'>
           <fieldset>
-
-            <!-- Form Name -->
-            <legend>Add New Recipe</legend>
 
             <!-- Text input-->
             <div class="form-group">
@@ -117,20 +107,20 @@
               </div>
             </div>
           </fieldset>
+          <hr>
         </form>
       </div>
       </div>
     </section>
 
-    <hr>
 
         <!-- Recipes -->
   <div id="recipes">
       <script id='recipe-template' type='text/x-handlebars-template'>
-        <div class="row" data-recipe-id="{{_id}}">
-            <div class="col-md-7">
+        <div class="row recipe-row" data-recipe-id="{{_id}}">
+            <div class="recipe col-md-4">
                 <a href="#">
-                    <img class="img-responsive" src="{{image}}" alt="">
+                    <img class="img-responsive images" data-toggle="modal" data-target="#image-modal" src="{{image}}" alt="">
                 </a>
             </div>
             <div class="col-md-5">
@@ -140,6 +130,7 @@
             </div>
                 <a class="btn btn-danger delete-recipe" href="#">Delete Recipe <span class="glyphicon glyphicon-trash"></span></a>
                 <a class="btn btn-primary update-recipe" data-toggle="modal" data-target="#form-modal" href="/update">Update Recipe <span class="glyphicon glyphicon-scissors"></span></a>
+
         </div>
         <!-- /.row -->
 
@@ -153,17 +144,78 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Update Recipe</h4>
       </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
+      <div class="modal-body" id="form">
+
+        <script id='form-template' type='text/x-handlebars-template'>
+
+        <form class="form-horizontal" id='update-form' data-recipe-id="{{_id}}">
+          <fieldset>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="name">Recipe Name</label>
+              <div class="col-md-4">
+              <input id="title" name="title" value="{{title}}" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="image">Image Link</label>
+              <div class="col-md-4">
+              <input id="textinput" name="image" value="{{image}}" type="text" placeholder="" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="summary">Recipe Summary</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="summary" name="summary">{{summary}}</textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ingredients">Ingredients</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="ingredients" name="ingredients">{{ingredients}}</textarea>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+        </script>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="update-save" class="btn btn-primary" data-dismiss="modal" onClick="window.location.reload()">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<div id="image-modal"class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+
+        <div class="modal-body" id="image-view">
+          <!-- <script id='image-template' type='text/x-handlebars-template'> -->
+            <img id="image-preview" src="">
+          <!-- </script> -->
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
   </body>
 </html>

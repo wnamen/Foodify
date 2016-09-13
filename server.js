@@ -41,24 +41,21 @@ var express = require('express'),
      res.sendFile(__dirname + '/views/index.html');
    });
 
+   app.get('/community', function(req, res){
+     res.sendFile(__dirname + '/views/community.html');
+   })
+
    /*
    * JSON API Endpoints
    */
+
    app.get('/community', function(req, res){
-    res.sendFile(__dirname + '/views/community.html');
+     res.sendFile('views/community');
    })
-
-    app.get('/community/update', function(req, res) {
-    res.sendFile(__dirname + '/views/update.html');
-  })
-  
-   app.get('/api/recipes/:recipeId', controllers.recipes.show);
-
    app.get('/api', controllers.api.index);
 
    app.get('/api/ingredients', controllers.ingredients.index);
    app.post('/api/ingredients', controllers.ingredients.create);
-
 
   //  app.delete('/api/ingredients' controllers.ingredients.delete);
 
@@ -66,14 +63,11 @@ var express = require('express'),
    app.get('/api/f2fdata/query', controllers.f2fdata.show);
 
    app.get('/api/recipes', controllers.recipes.index);
-   app.post('/api/recipes', controllers.recipes.create);
+   app.get('/api/recipes/:recipeId', controllers.recipes.show);
 
+   app.post('/api/recipes', controllers.recipes.create);
    app.delete('/api/recipes/:recipeId', controllers.recipes.destroy);
    app.put('/api/recipes/:recipeId', controllers.recipes.update);
-
-
-// 
-
 
   //Listen on Port 8080
   app.listen(process.env.PORT || 8080, function () {

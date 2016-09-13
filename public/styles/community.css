@@ -1,0 +1,21 @@
+.page-header {
+  margin-top: 60px;
+}
+
+.recipe-row {
+  height: 250px;
+}
+
+.images {
+  height: 250px;
+  width: 280px;
+}
+
+.btn-style {
+  /*margin-top: 100%;*/
+}
+
+#image-preview {
+  height: 510px;
+  width: 570px;
+}

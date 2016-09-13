@@ -19,7 +19,8 @@ $(document).ready(function() {
     success: handleRecipes
   });
 
-	// $('.carousel').carousel();
+  //adds a carousel feature to the main page
+	$('.carousel').carousel();
 
   //renders ingredients and posts them to the DB
   $("#render-form").on("submit", handleRenderForm);
