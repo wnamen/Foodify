@@ -106,6 +106,8 @@ function handleForm(json) {
 function handleUpdateSubmit(e){
   var recipeId = $('#update-form').data('recipe-id');
 
+  console.log(recipeId);
+
   $.ajax({
     method: "PUT",
     url: '/api/recipes/' + recipeId,
