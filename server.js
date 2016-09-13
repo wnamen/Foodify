@@ -48,6 +48,12 @@ var express = require('express'),
     res.sendFile(__dirname + '/views/community.html');
    })
 
+    app.get('/community/update', function(req, res) {
+    res.sendFile(__dirname + '/views/update.html');
+  })
+  
+   app.get('/api/recipes/:recipeId', controllers.recipes.show);
+
    app.get('/api', controllers.api.index);
 
    app.get('/api/ingredients', controllers.ingredients.index);
@@ -61,9 +67,12 @@ var express = require('express'),
 
    app.get('/api/recipes', controllers.recipes.index);
    app.post('/api/recipes', controllers.recipes.create);
+
    app.delete('/api/recipes/:recipeId', controllers.recipes.destroy);
    app.put('/api/recipes/:recipeId', controllers.recipes.update);
 
+
+// 
 
 
   //Listen on Port 8080
