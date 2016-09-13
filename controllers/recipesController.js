@@ -2,7 +2,6 @@ var db = require('../models');
 
 function index(req, res) {
 	db.Recipe.find({}, function(err, recipes) {
-		console.log(recipes);
 		res.json(recipes);
 	});
 }
@@ -18,7 +17,6 @@ function create(req, res){
 function show(req, res){
   db.Recipe.findById(req.params.recipeId, function(err, foundRecipe) {
     if(err) { console.log('recipesController.show error', err); }
-    console.log('recipesController.show responding with', foundRecipe);
     res.json(foundRecipe);
   });
 }
@@ -34,8 +32,10 @@ function update(req, res){
     recipe.title = req.body.title;
     recipe.image = req.body.image;
     recipe.summary = req.body.summary;
-    recipe.ingredient = req.body.ingredient;
+    recipe.ingredients = req.body.ingredients;
+
     recipe.save(function(err, savedRecipe) {
+
       res.json(savedRecipe);
     });
   });
