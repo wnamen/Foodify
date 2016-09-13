@@ -30,7 +30,15 @@ function destroy(req, res){
 }
 
 function update(req, res){
-
+  db.Recipes.findById(req.params.recipeId, function(err, recipe) {
+    recipe.title = req.body.title;
+    recipe.image = req.body.image;
+    recipe.summary = req.body.summary;
+    recipe.ingredient = req.body.ingredient;
+    recipe.save(function(err, savedRecipe) {
+      res.json(savedRecipe);
+    });
+  });
 }
 
 
