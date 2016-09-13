@@ -16,6 +16,10 @@ body {
     -o-background-size: cover;
 }
 
+h1 .page-header {
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
 /*
 #image {
     background-image: url("https://www.rubios.com/sites/default/files/banners/Ingredients_Feature.jpg");
@@ -115,7 +119,7 @@ span {
 
 .intro {
    position: absolute;
-   top: 175px;
+   top: 120px;
    left: 0;
    width: 100%;
    color: white;
@@ -125,7 +129,17 @@ span {
 
 .intro2 {
    position: absolute;
-   top: 300px;
+   top: 225px;
+   left: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+   font-style: italic;
+}
+
+.intro3 {
+   position: absolute;
+   top: 350px;
    left: 0;
    width: 100%;
    color: white;
