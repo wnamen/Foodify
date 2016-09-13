@@ -19,7 +19,7 @@ $(document).ready(function() {
     success: handleRecipes
   });
 
-	$('.carousel').carousel();
+	// $('.carousel').carousel();
 
   //renders ingredients and posts them to the DB
   $("#render-form").on("submit", handleRenderForm);
@@ -63,6 +63,14 @@ function handleRecipes(json){
   recipes.forEach(function(recipe) {
     renderRecipe(recipe);
   });
+  var $grid = $('.grid').masonry({
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 200
+  });
+  $grid.imagesLoaded().progress( function() {
+    $grid.masonry('layout');
+  });
 };
 
 function renderRecipe(recipe) {
@@ -73,7 +81,7 @@ function renderRecipe(recipe) {
 
 function renderIngredient(ingredient) {
   // console.log(ingredient);
-  $('.ingredients').append("<button class='delete' id='"+ data +"'>" + data + "<span> X</span></button>");
+  $('.ingredients').append("<button class='delete' id='"+ data + "'>" + data + "<span> X </span></button>");
 }
 
 function handleDeleteClick(e) {
