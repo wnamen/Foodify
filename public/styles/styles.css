@@ -40,6 +40,10 @@ header {
     padding-top:10px; color:#black;
 }
 
+#recipe-area {
+  padding-left: 75px;
+}
+
 #search-bar {
     display: block;
 }
@@ -57,14 +61,31 @@ header {
 }
 
 #render-form {
-  display: inline;
+    display: inline;
+}
+
+.carousel-indicators {  
+  bottom: 2px !important;
+}
+
+.grid-item { 
+  width: 200px;
+  padding: 5px;
 }
 
 #ingredients {
     height: 200px;
 }
 
+#myCarousel .carousel-inner img {
+  height: 20em;
+  margin: 0pt auto;
+}
 
+.carousel-inner .item {
+  height: 100%;
+  text-align: center;
+}
 
 .delete {
     margin: 10px;
@@ -74,18 +95,19 @@ header {
 }
 
 .item {
-    border: 2px solid black;
-    width: 50%;
+/*    border: 2px solid black;*/
+    width: 100%;
 }
 
 span {
-    color: red;
+    color: black;
+    font-weight: 10em;
 }
 
 
 .intro {
    position: absolute;
-   top: 200px;
+   top: 175px;
    left: 0;
    width: 100%;
    color: white;
