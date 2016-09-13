@@ -17,12 +17,153 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/community.js"></script>
   </head>
 
   <body>
+   <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">foodify</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Recipes</a>
+                    </li>
+                    <li>
+                        <a href="#">Ingredients</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">foodify
+                    <small>community</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+    <section class="container">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <form class="form-horizontal" id='recipe-form'>
+          <fieldset>
+
+            <!-- Form Name -->
+            <legend>Add New Recipe</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="name">Recipe Name</label>
+              <div class="col-md-4">
+              <input id="title" name="title" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="image">Image Link</label>
+              <div class="col-md-4">
+              <input id="textinput" name="image" type="text" placeholder="" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="summary">Recipe Summary</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="summary" name="summary"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ingredients">Ingredients</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="ingredients" name="ingredients"></textarea>
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="recipe-submit">Save Recipe</label>
+              <div class="col-md-4">
+                <button id="recipe-submit" name="recipe-submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      </div>
+    </section>
+
+    <hr>
+
+        <!-- Recipes -->
+  <div id="recipes">
+      <script id='recipe-template' type='text/x-handlebars-template'>
+        <div class="row" data-recipe-id="{{_id}}">
+            <div class="col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="{{image}}" alt="">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h4>{{title}}</h4>
+                <p>{{summary}}</p>
+                <p>{{ingredients}}</p>
+            </div>
+                <a class="btn btn-danger delete-recipe" href="#">Delete Recipe <span class="glyphicon glyphicon-trash"></span></a>
+                <a class="btn btn-primary update-recipe" data-toggle="modal" data-target="#form-modal" href="/update">Update Recipe <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+      </script>
+  </div>
+
+  <div id="form-modal"class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
   </body>
 </html>

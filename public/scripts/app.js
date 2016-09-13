@@ -19,6 +19,8 @@ $(document).ready(function() {
     success: handleRecipes
   });
 
+	$('.carousel').carousel();
+
   //renders ingredients and posts them to the DB
   $("#render-form").on("submit", handleRenderForm);
 

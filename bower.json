@@ -1,0 +1,17 @@
+{
+  "name": "foodify",
+  "description": "Application to search recipes by ingredients",
+  "main": "server.js",
+  "authors": [
+    "William Namen and Ashley Vernon"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/wnamen/foodify",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
