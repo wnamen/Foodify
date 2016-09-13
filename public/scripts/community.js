@@ -18,11 +18,12 @@ $(document).ready(function() {
 
   $('#recipe-form').submit(handleFormSubmit);
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick);
+  // $('#recipes').on('click', '.update-recipe', handleUpdateRecipeClick);
+  // $('#update-form').submit(handleUpdateSubmit);
 
 });
 
 function handleFormSubmit(e){
-	// e.preventDefault();
 
 	$.ajax({
 		method: 'POST',
@@ -32,9 +33,8 @@ function handleFormSubmit(e){
 		success: handleRecipes
 	});
 
-	$(this).trigger('reset');
-
 }
+
 
 function handleRecipes(json){
   var recipes = json;
@@ -67,3 +67,21 @@ function handleRecipeDelete(data){
 	var deletedRecipeId = data._id;
 	$('div[data-recipe-id=' + deletedRecipeId + ']').remove();
 }
+
+// function handleUpdateRecipeClick(e){
+// 	e.preventDefault();
+// 	var $thisButton = $(this);
+// 	console.log($thisButton);
+// 	var recipeId = $thisButton.parent('div').data('recipe-id');
+
+// 	var main = '/api/recipes/';
+// 	var url = main + recipeId;
+
+// 	$.ajax({
+// 		method: 'GET',
+// 		url: url,
+// 		data: 'json'
+// 	});
+// }
+
+
