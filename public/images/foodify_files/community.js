@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   $('#recipe-form').submit(handleFormSubmit);
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick);
-  // $('#recipes').on('click', '.update-recipe', handleUpdateRecipeClick);
+  $('#recipes').on('click', '.update-recipe', handleUpdateRecipeClick);
   // $('#update-form').submit(handleUpdateSubmit);
 
 });
@@ -68,20 +68,23 @@ function handleRecipeDelete(data){
 	$('div[data-recipe-id=' + deletedRecipeId + ']').remove();
 }
 
-// function handleUpdateRecipeClick(e){
-// 	e.preventDefault();
-// 	var $thisButton = $(this);
-// 	console.log($thisButton);
-// 	var recipeId = $thisButton.parent('div').data('recipe-id');
+function handleUpdateRecipeClick(e){
+	e.preventDefault();
+	var $thisButton = $(this);
+	console.log($thisButton);
+	var recipeId = $thisButton.parent('div').data('recipe-id');
 
-// 	var main = '/api/recipes/';
-// 	var url = main + recipeId;
+	var main = '/api/recipes/';
+	var url = main + recipeId;
 
-// 	$.ajax({
-// 		method: 'GET',
-// 		url: url,
-// 		data: 'json'
-// 	});
-// }
+	console.log($thisButton.attr('href', url));
+	console.log(url);
+	debugger
+	$.ajax({
+		method: 'GET',
+		url: url,
+		data: 'json'
+	});
+}
 
 
