@@ -6,6 +6,7 @@ var recipeTemplate;
 
 $(document).ready(function() {
 
+  //Hides the new recipe form on load
   $('#recipe-form').css('display', 'none');
 
   recipeHtml = $('#recipe-template').html();
@@ -14,15 +15,14 @@ $(document).ready(function() {
   formHtml = $('#form-template').html();
   formTemplate = Handlebars.compile(formHtml);
 
-  // imageHtml = $('#image-template').html();
-  // imageTemplate = Handlebars.compile(imageHtml);
-
+  //added slideToggle to new recipe form
   $('#form-toggle').click(function(e){
     e.preventDefault();
 
     $('#recipe-form').slideToggle('slow');
   })
 
+  //Renders current posted recipes from the community database
   $.ajax({
   	method: 'GET',
   	url: '/api/recipes',
@@ -30,10 +30,19 @@ $(document).ready(function() {
   	success: handleRecipes
   });
 
+  //Sends the form data to the POST route
   $('#recipe-form').submit(handleFormSubmit);
+
+  //Deletes the selected recipe
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick);
+
+  //Opens a modal to udpate the recipe
   $('#recipes').on('click', '.update-recipe', handleUpdateRecipeClick);
+
+  //Saves the newly updated recipe changes
   $('#form-modal').click('#update-save', handleUpdateSubmit);
+
+  //Opens a modal to preview an image
   $('#recipes').on('click', '.images', handleImageClick);
 
 });
@@ -56,7 +65,6 @@ function handleRecipes(json){
 };
 
 function renderRecipe(recipe) {
-  // console.log(recipe);
   var html = recipeTemplate(recipe);
   $('#recipes').prepend(html);
 }
@@ -65,7 +73,6 @@ function handleDeleteRecipeClick(e){
 	e.preventDefault();
 	var $thisButton = $(this);
 	var recipeId = $thisButton.parent('div').data('recipe-id');
-	console.log($thisButton);
 
 	var url= '/api/recipes/' + recipeId;
 	$.ajax({
@@ -83,7 +90,6 @@ function handleRecipeDelete(data){
 function handleUpdateRecipeClick(e){
 	e.preventDefault();
 	var $thisButton = $(this);
-	console.log($thisButton);
 	var recipeId = $thisButton.parent('div').data('recipe-id');
 
 	var url = '/api/recipes/' + recipeId;
@@ -105,8 +111,6 @@ function handleForm(json) {
 
 function handleUpdateSubmit(e){
   var recipeId = $('#update-form').data('recipe-id');
-
-  console.log(recipeId);
 
   $.ajax({
     method: "PUT",
