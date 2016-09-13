@@ -6,8 +6,22 @@ var recipeTemplate;
 
 $(document).ready(function() {
 
+  $('#recipe-form').css('display', 'none');
+
   recipeHtml = $('#recipe-template').html();
   recipeTemplate = Handlebars.compile(recipeHtml);
+
+  formHtml = $('#form-template').html();
+  formTemplate = Handlebars.compile(formHtml);
+
+  // imageHtml = $('#image-template').html();
+  // imageTemplate = Handlebars.compile(imageHtml);
+
+  $('#form-toggle').click(function(e){
+    e.preventDefault();
+
+    $('#recipe-form').slideToggle('slow');
+  })
 
   $.ajax({
   	method: 'GET',
@@ -18,13 +32,13 @@ $(document).ready(function() {
 
   $('#recipe-form').submit(handleFormSubmit);
   $('#recipes').on('click', '.delete-recipe', handleDeleteRecipeClick);
-  // $('#recipes').on('click', '.update-recipe', handleUpdateRecipeClick);
-  // $('#update-form').submit(handleUpdateSubmit);
+  $('#recipes').on('click', '.update-recipe', handleUpdateRecipeClick);
+  $('#form-modal').click('#update-save', handleUpdateSubmit);
+  $('#recipes').on('click', '.images', handleImageClick);
 
 });
 
 function handleFormSubmit(e){
-
 	$.ajax({
 		method: 'POST',
 		url: '/api/recipes',
@@ -32,9 +46,7 @@ function handleFormSubmit(e){
 		data: $('#recipe-form').serializeArray(),
 		success: handleRecipes
 	});
-
 }
-
 
 function handleRecipes(json){
   var recipes = json;
@@ -68,20 +80,49 @@ function handleRecipeDelete(data){
 	$('div[data-recipe-id=' + deletedRecipeId + ']').remove();
 }
 
-// function handleUpdateRecipeClick(e){
-// 	e.preventDefault();
-// 	var $thisButton = $(this);
-// 	console.log($thisButton);
-// 	var recipeId = $thisButton.parent('div').data('recipe-id');
+function handleUpdateRecipeClick(e){
+	e.preventDefault();
+	var $thisButton = $(this);
+	console.log($thisButton);
+	var recipeId = $thisButton.parent('div').data('recipe-id');
 
-// 	var main = '/api/recipes/';
-// 	var url = main + recipeId;
+	var url = '/api/recipes/' + recipeId;
 
-// 	$.ajax({
-// 		method: 'GET',
-// 		url: url,
-// 		data: 'json'
-// 	});
-// }
+	$.ajax({
+		method: 'GET',
+		url: url,
+		data: 'json',
+    success: handleForm
+	});
+}
 
+function handleForm(json) {
+  $('#form').empty();
 
+  var html = formTemplate(json);
+  $('#form').prepend(html);
+}
+
+function handleUpdateSubmit(e){
+  var recipeId = $('#update-form').data('recipe-id');
+
+  $.ajax({
+    method: "PUT",
+    url: '/api/recipes/' + recipeId,
+    data: $('#update-form').serializeArray(),
+    dataType: 'JSON',
+    success: handleRecipeUpdate
+  });
+}
+
+function handleRecipeUpdate(data) {
+  var recipeId = data._id;
+  $('div[data-recipe-id=' + deletedRecipeId + ']').remove();
+  renderRecipe(data);
+}
+
+function handleImageClick(e){
+  e.preventDefault();
+  var image = $(this).attr('src');
+  $('#image-preview').attr('src', image);
+}
