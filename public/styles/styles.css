@@ -16,6 +16,10 @@ body {
     -o-background-size: cover;
 }
 
+h1 .page-header {
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
 /*
 #image {
     background-image: url("https://www.rubios.com/sites/default/files/banners/Ingredients_Feature.jpg");
@@ -40,8 +44,17 @@ header {
     padding-top:10px; color:#black;
 }
 
+#recipe-area {
+  padding-left: 75px;
+}
+
 #search-bar {
     display: block;
+}
+
+#ingredient-input {
+  height: 34px;
+  border-radius: 4px;
 }
 
 #search-items {
@@ -57,35 +70,56 @@ header {
 }
 
 #render-form {
-  display: inline;
+    display: inline;
+}
+
+.carousel-indicators {  
+  bottom: 2px !important;
+}
+
+.grid-item { 
+  width: 200px;
+  padding: 5px;
 }
 
 #ingredients {
     height: 200px;
 }
 
+#myCarousel .carousel-inner img {
+  height: 20em;
+  margin: 0pt auto;
+}
 
+.carousel-inner .item {
+  height: 100%;
+  text-align: center;
+}
 
 .delete {
     margin: 10px;
     border-color: white;
     color: black;
-    background-color: white
+    box-shadow: 0px 0px 2px 2px;
+    background-color: white;
+    font-size: 18px;
+    border-radius: 4px;
 }
 
 .item {
-    border: 2px solid black;
-    width: 50%;
+/*    border: 2px solid black;*/
+    width: 100%;
 }
 
 span {
-    color: red;
+    color: black;
+    font-weight: 10em;
 }
 
 
 .intro {
    position: absolute;
-   top: 200px;
+   top: 120px;
    left: 0;
    width: 100%;
    color: white;
@@ -95,7 +129,17 @@ span {
 
 .intro2 {
    position: absolute;
-   top: 300px;
+   top: 225px;
+   left: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+   font-style: italic;
+}
+
+.intro3 {
+   position: absolute;
+   top: 350px;
    left: 0;
    width: 100%;
    color: white;
