@@ -52,6 +52,7 @@ var express = require('express'),
    app.get('/community', function(req, res){
      res.sendFile('views/community');
    })
+   
    app.get('/api', controllers.api.index);
 
    app.get('/api/ingredients', controllers.ingredients.index);
