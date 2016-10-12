@@ -6,10 +6,18 @@ var data;
 
 var ingredientList = "q=";
 
+
+
 $(document).ready(function() {
 
   recipeHtml = $('#recipe-template').html();
   recipeTemplate = Handlebars.compile(recipeHtml);
+
+  var $grid = $('.grid').masonry({
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 200
+  });
 
   // make a get request for top 30 recipes
   $.ajax({
