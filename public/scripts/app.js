@@ -39,11 +39,11 @@ $(document).ready(function() {
   //clears the ingredients from the search form
   $('#clear-form').on('click', handleClearForm);
 
-  //searches api for ingrediet list query
-  $('#form-submit').on('click', handleFormSubmit);
-
-  //searches api for query using search bar
+  //searches api for query using SEARCH BAR
   $('#search-form').on('submit', handleSearchBar);
+
+  //searches api for ingrediet list query
+  $('#ingredient-submit').on('click', handleIngredientSubmit);
 
   $('.portfolio-item').click(function(e){
     e.preventDefault();
@@ -68,9 +68,19 @@ function handleRenderForm(e){
 }
 
 function handleRecipes(json){
+
+  $('#recipes').remove();
+  $('#recipe-area').prepend('<div id="recipes" class="grid"></div>');
+
   var recipes = json.recipes;
   recipes.forEach(function(recipe) {
     renderRecipe(recipe);
+  });
+
+  var $grid = $('.grid').masonry({
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 200
   });
 
   $grid.imagesLoaded().progress( function() {
@@ -108,9 +118,12 @@ function handleClearForm(e){
 	$('.ingredients').empty();
 };
 
-function handleFormSubmit(e){
+function handleIngredientSubmit(e){
   e.preventDefault();
   $("#recipes").empty();
+
+  console.log('handleIngredientSubmit');
+  console.log(ingredientList);
 
   $.ajax({
     method: "GET",

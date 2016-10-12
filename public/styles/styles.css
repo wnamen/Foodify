@@ -98,12 +98,18 @@ header {
 
 .delete {
     margin: 10px;
-    border-color: white;
+    /*border-color: white;*/
     color: black;
-    box-shadow: 0px 0px 2px 2px;
+    border: none;
+    /*box-shadow: 0px 0px 2px 2px;*/
     background-color: white;
-    font-size: 18px;
-    border-radius: 4px;
+    font-size: 33px;
+    font-family: fantasy;
+    /*border-radius: 4px;*/
+}
+
+.delete:hover {
+  background-color: orange;
 }
 
 .item {
@@ -111,6 +117,9 @@ header {
     width: 100%;
 }
 
+#clear-form {
+  text-align: center;
+}
 span {
     color: black;
     font-weight: 10em;
