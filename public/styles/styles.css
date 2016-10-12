@@ -108,8 +108,13 @@ header {
     /*border-radius: 4px;*/
 }
 
-.delete:hover {
-  background-color: orange;
+.delete:hover span {
+  display: none;
+}
+
+.delete:hover:before {
+  content: " X ";
+  color: red;
 }
 
 .item {
