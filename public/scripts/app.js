@@ -4,6 +4,7 @@ var recipeHtml;
 var recipeTemplate;
 var data;
 
+var dataList = "";
 var ingredientList = "q=";
 
 
@@ -57,8 +58,9 @@ function handleRenderForm(e){
   var index = ingredientData.indexOf("=");
   data = ingredientData.slice(index + 1);
 
+  dataList += data + "+";
   ingredientList += data + "+";
-  console.log(ingredientList);
+  console.log(dataList);
 
   $.post('/api/ingredients', ingredientData, function(ingredient) {
     renderIngredient(ingredient);  //render the server's response
@@ -102,7 +104,17 @@ function handleDeleteClick(e) {
   e.preventDefault();
 	var idName = $(this).attr('id');
 	$("#" + idName).remove();
-  // ingredientList = "q=";
+
+  var tempArray = dataList.split("+")
+  for (var i = 0; i < tempArray.length; i++) {
+    if (idName === tempArray[i]) {
+      tempArray.splice(i, 1);
+      dataList = tempArray.join("+");
+      break;
+    }
+  }
+
+  ingredientList = "q=" + dataList;
 
   $.ajax({
     method: "DELETE",
