@@ -50,6 +50,7 @@ header {
 
 #search-bar {
     display: block;
+    background-image: url("../images/Ingredients_Feature.jpg")
 }
 
 #ingredient-input {
@@ -73,11 +74,11 @@ header {
     display: inline;
 }
 
-.carousel-indicators {  
+.carousel-indicators {
   bottom: 2px !important;
 }
 
-.grid-item { 
+.grid-item {
   width: 200px;
   padding: 5px;
 }
@@ -108,8 +109,13 @@ header {
     /*border-radius: 4px;*/
 }
 
-.delete:hover {
-  background-color: orange;
+.delete:hover span {
+  display: none;
+}
+
+.delete:hover:before {
+  content: " x ";
+  color: red;
 }
 
 .item {

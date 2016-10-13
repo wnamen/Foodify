@@ -22,6 +22,12 @@ $(document).ready(function() {
     $('#recipe-form').slideToggle('slow');
   })
 
+  $('#recipe-cancel').click(function(e){
+    e.preventDefault();
+
+    $('#recipe-form').slideToggle('slow');
+  })
+
   //Renders current posted recipes from the community database
   $.ajax({
   	method: 'GET',

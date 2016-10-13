@@ -89,14 +89,13 @@ function handleRecipes(json){
 };
 
 function renderRecipe(recipe) {
-  // console.log(recipe);
   var html = recipeTemplate(recipe);
   $('#recipes').prepend(html);
 }
 
 function renderIngredient(ingredient) {
-  // console.log(ingredient);
-  $('.ingredients').append("<button class='delete' id='"+ data + "'>" + data + "</button>");
+  var temp = data.split("+").join(" ")
+  $('.ingredients').append("<button class='delete' id='"+ data + "'>" + temp + "</button>");
 }
 
 function handleDeleteClick(e) {
@@ -110,6 +109,10 @@ function handleDeleteClick(e) {
     url: '/api/ingredients/:id',
     success: handleDeleteIngredient
   });
+}
+
+function handleDeleteIngredient(json) {
+  console.log(json + " had been deleted");
 }
 
 function handleClearForm(e){
