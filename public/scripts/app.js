@@ -102,6 +102,7 @@ function renderIngredient(ingredient) {
 
 function handleDeleteClick(e) {
   e.preventDefault();
+  console.log("ejlkfj");
 	var idName = $(this).attr('id');
 	$("#" + idName).remove();
 
@@ -115,16 +116,16 @@ function handleDeleteClick(e) {
   }
 
   ingredientList = "q=" + dataList;
-
-  $.ajax({
-    method: "DELETE",
-    url: '/api/ingredients/:id',
-    success: handleDeleteIngredient
-  });
+  //
+  // $.ajax({
+  //   method: "DELETE",
+  //   url: '/api/ingredients/:id',
+  //   success: handleDeleteIngredient
+  // });
 }
 
 function handleDeleteIngredient(json) {
-  console.log(json + " had been deleted");
+  console.log("ingredient had been deleted");
 }
 
 function handleClearForm(e){
